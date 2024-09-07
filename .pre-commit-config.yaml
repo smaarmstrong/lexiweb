@@ -4,9 +4,10 @@ repos:
     hooks:
       # linter
       - id: ruff
-        args: [--fix]  # Customize linting rules as needed
+        args: [check]  # Customize linting rules as needed
       # formatter
-      - id: ruff-format
+      - id: ruff
+        args: [format]
 
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v3.4.0

@@ -43,8 +43,8 @@ jobs:
       - name: Run ruff
         run: |
           source venv/bin/activate
-          ruff . --fix  # Customize linting rules as needed
-          ruff-format .
+          ruff check
+          ruff format
 
       - name: Run tests
         run: |
