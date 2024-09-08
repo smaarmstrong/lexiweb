@@ -1,3 +1,4 @@
+# Python Django .gitignore
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -160,3 +161,57 @@ cython_debug/
 #  and can be added to the global gitignore or merged into this file.  For a more nuclear
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 #.idea/
+
+# React.ts .gitignore
+# Dependency directories
+node_modules/
+npm-debug.log*
+
+# Build directories
+build/
+dist/
+.DS_Store
+
+# Testing
+coverage/
+*.log
+*.pid
+*.seed
+*.pid.lock
+
+# Optional eslint cache
+.eslintcache
+
+# TypeScript
+*.tsbuildinfo
+
+# Misc
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Editor/IDE settings
+.vscode/
+.idea/
+
+# Yarn
+.yarn/
+.pnp.*
+.yarnrc.yml
+__tests__
+__mocks__
+
+# Mac system files
+*.DS_Store
+
+# React Native files
+.expo/
+.expo-shared/
+
+# Parcel-bundler cache (if used)
+.cache/
+
+# Ignore generated API from OpenAPI (if applicable)
+generated-api/
