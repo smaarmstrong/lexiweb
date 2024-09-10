@@ -1,3 +1,4 @@
+---
 name: CI
 
 on:
@@ -20,6 +21,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
+      # Python setup and linting with Ruff
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v4
         with:
@@ -29,24 +31,47 @@ jobs:
         uses: actions/cache@v3
         with:
           path: ~/.cache/pip
-          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+          key: "${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}"
           restore-keys: |
             ${{ runner.os }}-pip-
 
-      - name: Install dependencies
+      - name: Install Python dependencies and Ruff
         run: |
           python -m venv venv
           source venv/bin/activate
           pip install -r requirements.txt
           pip install ruff
 
-      - name: Run ruff
+      - name: Run Ruff
         run: |
           source venv/bin/activate
           ruff check .
           ruff format .
 
-      - name: Run tests
+      - name: Run Python tests
         run: |
           source venv/bin/activate
           python manage.py test
+
+      # Node.js setup and linting/formatting with ESLint and Prettier
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '22.8.0'  # Use Node.js v22.8.0
+
+      - name: Cache node modules
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: "${{ runner.os }}-node-modules-${{ hashFiles('**/package-lock.json') }}"
+          restore-keys: |
+            ${{ runner.os }}-node-modules
+
+      - name: Install Node.js dependencies
+        run: npm install
+
+      - name: Run ESLint
+        run: npm run lint
+
+      - name: Run Prettier
+        run: npm run prettier:check
