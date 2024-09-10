@@ -1,7 +1,7 @@
-from rest_framework.parsers import MultiPartParser, FormParser, JSONParser
-from rest_framework import viewsets
+from rest_framework import status, viewsets
+from rest_framework.parsers import FormParser, JSONParser, MultiPartParser
 from rest_framework.response import Response
-from rest_framework import status
+
 from base.models import Text
 from base.serializers import TextSerializer
 
